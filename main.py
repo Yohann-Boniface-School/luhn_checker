@@ -1,4 +1,4 @@
-from typing import Union, Iterable
+from typing import Iterable, List, Union
 
 
 def convert(n: int) -> int:
@@ -16,15 +16,15 @@ def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
     :param card: the number of the card in a integer or string value
     :return:
     """
-    card_digits = [int(x) for x in str(card) if x not in "-_ "]
-    checksum = card_digits.pop()
-    key = sum(convert(digit * (((c + 1) % 2) + 1)) for c, digit in enumerate(card_digits))
+    card_digits: List[int] = [int(x) for x in str(card) if x not in "-_ "]
+    checksum: int = card_digits.pop()
+    key: int = sum(convert(digit * (((c + 1) % 2) + 1)) for c, digit in enumerate(card_digits))
 
     return not (key + checksum) % 10
 
 
 def main() -> None:
-    card = input("card to check: ")
+    card: str = input("card to check: ")
     print(f"Card is {'in' * (not check(card))}valid")
 
 
