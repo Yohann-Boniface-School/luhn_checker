@@ -21,3 +21,12 @@ def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
     key = sum(convert(digit * (((c + 1) % 2) + 1)) for c, digit in enumerate(card_digits))
 
     return not (key + checksum) % 10
+
+
+def main() -> None:
+    card = input("card to check: ")
+    print(f"Card is {'in' * (not check(card))}valid")
+
+
+if __name__ == '__main__':
+    main()
