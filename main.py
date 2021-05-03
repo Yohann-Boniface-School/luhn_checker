@@ -14,7 +14,7 @@ def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
     """
     Check the validity of a given card
     :param card: the number of the card in a integer or string value
-    :return:
+    :return: card validity
     """
     card_digits: List[int] = [int(x) for x in str(card) if x not in "-_ "]
     checksum: int = card_digits.pop()
