@@ -1,15 +1,6 @@
 from typing import Iterable, List, Union
 
 
-def convert(n: int) -> int:
-    """ 
-    An inner function that convert two digit integer into single digit.
-    :param n: integer to convert
-    :return: converted integer
-    """
-    return n if n < 10 else sum(divmod(n, 10))
-
-
 def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
     """
     Check the validity of a given card
@@ -18,8 +9,7 @@ def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
     """
     card_digits: List[int] = [int(x) for x in str(card) if x not in "-_ "]
     checksum: int = card_digits.pop()
-    key: int = sum(convert(digit * (((c + 1) % 2) + 1)) for c, digit in enumerate(card_digits))
-
+    key: int = sum(sum(divmod(digit * (((c + 1) % 2) + 1), 10)) for c, digit in enumerate(card_digits))
     return not (key + checksum) % 10
 
 
