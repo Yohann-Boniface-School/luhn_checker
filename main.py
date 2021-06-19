@@ -2,7 +2,8 @@ from typing import Iterable, List, Union
 
 
 def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
-    """Check the validity of a given card
+    """
+    Check the validity of a given card
 
     :param card: the number of the card in a integer or string value
     :return: card validity
