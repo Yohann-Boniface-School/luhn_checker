@@ -2,11 +2,7 @@ from typing import Iterable, List, Union
 
 
 def check(card: Union[int, Iterable[Union[int, str]]]) -> bool:
-    """ Check the validity of a given card
-
-    :param card: the number of the card in a integer or string value
-    :return: card validity
-    """
+    """Check the validity of a given card."""
     card_digits: List[int] = [int(x) for x in str(card) if x not in "-_ "]
     checksum: int = card_digits.pop()
     key: int = sum(sum(divmod(digit * (((c + 1) % 2) + 1), 10)) for c, digit in enumerate(card_digits))
